@@ -1,0 +1,607 @@
+/**
+ * Стили для SPA-сайта по БЖД программистов
+ * Палитра: пшеничный (#f5deb3), оливковый (#808000) и их оттенки
+ */
+
+:root {
+    --wheat: #f5deb3;
+    --wheat-light: #fdf8ee;
+    --wheat-dark: #e6c280;
+    --olive: #808000;
+    --olive-dark: #555500;
+    --olive-light: #abab46;
+    --text-dark: #2c2c2c;
+    --text-muted: #666666;
+    --white: #ffffff;
+    --shadow-light: rgba(0, 0, 0, 0.05);
+    --shadow-medium: rgba(128, 128, 0, 0.15);
+}
+
+/* --- БАЗОВЫЕ СБРОСЫ И НАСТРОЙКИ --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--wheat-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- ШАПКА И ПАНЕЛЬ НАВИГАЦИИ --- */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--olive);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+}
+
+.logo {
+    color: var(--wheat);
+    font-size: 1.4rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    padding: 8px 16px;
+    margin: 0 4px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-links a:hover, 
+.nav-links a.active {
+    background-color: var(--wheat);
+    color: var(--olive-dark);
+    font-weight: bold;
+}
+
+/* --- СТРУКТУРА СЕКЦИЙ (СТРАНИЦ) --- */
+main {
+    margin-top: 90px;
+    margin-bottom: 90px;
+}
+
+.page-section {
+    display: none; /* Скрыто по умолчанию для SPA */
+    max-width: 950px;
+    margin: 30px auto;
+    padding: 40px 30px;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px var(--shadow-light);
+    border-left: 6px solid var(--olive);
+}
+
+.page-section.active {
+    display: block; /* Показываем только активную вкладку */
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+/* --- ОБЩИЕ ТЕКСТОВЫЕ ЭЛЕМЕНТЫ --- */
+h1, h2, h3, h4 {
+    color: var(--olive-dark);
+    margin-bottom: 20px;
+}
+
+h1 { font-size: 2.2rem; line-height: 1.3; }
+h2 { font-size: 1.8rem; border-bottom: 2px solid var(--wheat); padding-bottom: 10px; }
+h3 { font-size: 1.3rem; }
+
+p {
+    margin-bottom: 15px;
+    text-align: justify;
+    font-size: 1rem;
+}
+
+strong {
+    color: var(--olive-dark);
+}
+
+.lead-text {
+    font-size: 1.15rem;
+    color: var(--olive-dark);
+    font-weight: 500;
+    border-left: 3px solid var(--olive-light);
+    padding-left: 15px;
+    margin-bottom: 20px;
+}
+
+.content-subblock {
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 1px dashed var(--wheat-dark);
+}
+
+/* --- МЕДИА И ИЛЛЮСТРАЦИИ --- */
+.main-img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin: 20px 0;
+    border: 4px solid var(--wheat);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* --- СПИСКИ И ПЛАШКИ --- */
+.styled-list {
+    list-style-type: none;
+    margin: 20px 0 20px 10px;
+}
+
+.styled-list li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 12px;
+}
+
+.styled-list li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: var(--olive);
+    font-weight: bold;
+}
+
+.card-badge, .rules-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+.card-badge {
+    background-color: var(--olive);
+    color: var(--white);
+}
+
+.rules-badge {
+    background-color: var(--wheat);
+    color: var(--olive-dark);
+}
+
+.rules-badge.highlight {
+    background-color: var(--olive);
+    color: var(--white);
+}
+
+/* --- СЕКЦИЯ 1: ОСОБЫЕ ЭЛЕМЕНТЫ ГЛАВНОЙ --- */
+.nested-features {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.feature-item {
+    background-color: var(--wheat-light);
+    padding: 20px;
+    border-radius: 6px;
+    border: 1px solid var(--wheat);
+    border-left: 5px solid var(--olive-light);
+}
+
+.summary-box {
+    background-color: var(--wheat-light);
+    padding: 30px;
+    border-radius: 8px;
+    border: 2px solid var(--wheat);
+}
+
+.action-call {
+    font-style: italic;
+    font-weight: bold;
+    color: var(--olive-dark);
+    text-align: center;
+    margin-top: 25px;
+}
+
+/* --- СЕКЦИЯ 2 И 4: ИНТЕРАКТИВНЫЕ СЕТКИ И КАРТОЧКИ С ПРИПОДНИМАНИЕМ --- */
+.info-grid, .rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.info-card, .rules-card {
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid var(--wheat);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Эффект легкого интерактивного приподнимания */
+.info-card:hover, .rules-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px var(--shadow-medium);
+}
+
+.info-summary {
+    background-color: var(--wheat-light);
+    border-left: 5px solid var(--olive);
+    padding: 20px;
+    border-radius: 4px;
+    margin-top: 35px;
+}
+
+.full-width-card {
+    grid-column: 1 / -1;
+    background-color: var(--wheat-light);
+}
+
+.exercises-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.exercise-step {
+    background: var(--white);
+    padding: 15px;
+    border-radius: 6px;
+    border-top: 4px solid var(--olive-light);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+/* --- СЕКЦИЯ 3: ПОВОРАЧИВАЮЩИЕСЯ КАРТОЧКИ --- */
+.flip-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 250px;
+    perspective: 1000px; /* Эффект глубины 3D */
+    transition: transform 0.3s;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Разворот внутренней стороны при наведении */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Комбинация: легкое приподнимание всей карточки + переворот */
+.flip-card:hover {
+    transform: translateY(-5px);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden; /* Скрывает изнанку при повороте */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    border-radius: 8px;
+}
+
+.flip-card-front {
+    background-color: var(--olive);
+    color: var(--white);
+    border: 1px solid var(--olive-dark);
+}
+
+.flip-card-front h3 {
+    color: var(--white);
+    font-size: 1.15rem;
+}
+
+.fact-icon {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+}
+
+.flip-card-back {
+    background-color: var(--wheat);
+    color: var(--text-dark);
+    transform: rotateY(180deg);
+    border: 1px solid var(--wheat-dark);
+}
+
+.flip-card-back p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: left;
+    margin-bottom: 0;
+}
+
+.scientific-context {
+    background-color: var(--wheat-light);
+    border-left: 5px solid var(--olive);
+    padding: 20px;
+    border-radius: 4px;
+    margin-top: 40px;
+}
+
+/* --- СЕКЦИЯ 5: ИНТЕРАКТИВНЫЙ ТЕСТ И ЭЛЕМЕНТЫ ИНТЕРФЕЙСА --- */
+.quiz-container {
+    background-color: var(--wheat-light);
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid var(--wheat);
+    margin-top: 25px;
+}
+
+.quiz-progress-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--olive-dark);
+}
+
+.progress-bar-bg {
+    flex-grow: 1;
+    background-color: var(--wheat);
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+#progress-bar-fill {
+    background-color: var(--olive);
+    height: 100%;
+    width: 0%;
+    transition: width 0.4s ease;
+}
+
+.question-text {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.option-btn {
+    background-color: var(--white);
+    border: 2px solid var(--olive-light);
+    padding: 14px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    transition: all 0.2s ease;
+}
+
+.option-btn:hover:not(:disabled) {
+    background-color: var(--wheat);
+    border-color: var(--olive);
+    transform: translateX(4px);
+}
+
+.option-btn:disabled {
+    cursor: default;
+}
+
+/* Кнопки управления */
+.btn {
+    background-color: var(--olive);
+    color: var(--white);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: var(--olive-dark);
+}
+
+/* Блок моментального разбора ответа */
+#feedback-box {
+    margin-top: 25px;
+    padding: 20px;
+    background-color: var(--white);
+    border-radius: 6px;
+    border-left: 5px solid var(--olive);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+#feedback-status {
+    font-weight: bold;
+    font-size: 1.15rem;
+    margin-bottom: 8px;
+}
+
+#feedback-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+/* Итоговый экран результатов */
+.score-badge {
+    display: inline-block;
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: var(--white);
+    background-color: var(--olive);
+    padding: 8px 30px;
+    border-radius: 50px;
+    margin: 20px 0;
+    box-shadow: 0 4px 10px rgba(85, 85, 0, 0.2);
+}
+.main-result-p {
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+.recommendations-box {
+    background: var(--white);
+    border: 1px solid var(--wheat-dark);
+    padding: 25px;
+    border-radius: 8px;
+    text-align: left;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+.recommendations-box h4 {
+    color: var(--olive-dark);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--wheat);
+    padding-bottom: 5px;
+}
+.recommendations-box ul {
+    margin-left: 20px;
+}
+.recommendations-box li {
+    margin-bottom: 10px;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+/* Скрытие элементов */
+.hidden {
+    display: none !important;
+}
+/* --- НИЖНИЕ СТРЕЛОЧКИ НАВИГАЦИИ --- */
+.navigation-arrows {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    display: flex;
+    gap: 15px;
+    z-index: 1000;
+}
+.arrow-btn {
+    background-color: var(--olive);
+    color: var(--white);
+    border: none;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    font-size: 1.6rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, transform 0.2s, opacity 0.3s;
+}
+    .arrow-btn:hover:not([style*="cursor: default"]) {
+    background-color: var(--olive-dark);
+    transform: scale(1.1);
+}
+/* --- АНИМАЦИИ --- */
+@keyframes fadeIn {
+from {
+    opacity: 0;
+    transform: translateY(12px);
+}
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+}
+/* --- АДАПТИВНОСТЬ (МОБИЛЬНЫЕ УСТРОЙСТВА) --- */
+@media (max-width: 768px) {
+.navbar {
+    flex-direction: column;
+    gap: 12px;
+    padding: 15px 10px;
+}
+.nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+}
+.nav-links a {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+}
+main {
+    margin-top: 140px; /* Увеличено пространство под двухстрочную мобильную шапку */
+    margin-bottom: 90px;
+}
+.page-section {
+    margin: 15px 10px;
+    padding: 25px 15px;
+}
+h1 { font-size: 1.7rem; }
+h2 { font-size: 1.4rem; }
+.navigation-arrows {
+    width: 100%;
+    justify-content: center;
+    right: 0;
+    bottom: 15px;
+    padding: 0 20px;
+}
+.arrow-btn {
+    width: 48px;
+    height: 48px;
+}
+}
